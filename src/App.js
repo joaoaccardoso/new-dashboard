@@ -1,24 +1,55 @@
 import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Users from './pages/Users/Users';
+import About from './pages/About/About';
+import MenuConfig from './components/MenuConfig/MenuConfig';
+import Calendar from './pages/Calendar/Calendar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        {/* <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav> */}
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <MenuConfig/>
+        <div className="Main">
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/users">
+              <Users />
+            </Route>
+            <Route path="/calendar">
+              <Calendar />
+            </Route>
+            <Route path="/">
+              <Dashboard />
+            </Route>
+            
+          </Switch>
+        </div>
+      </div>
   );
 }
 
